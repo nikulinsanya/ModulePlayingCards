@@ -1,0 +1,526 @@
+body{
+	font-family: Arial;
+	background: url(../img/bg.jpg) center center;
+	margin: 0;
+	padding: 0;
+}
+*{
+	transition:all 0.3s ease;
+    box-sizing: content-box !important;
+}
+#wrapper{
+	width: 1200px;
+	margin: 0 auto;
+	height: auto;
+	background: none;
+}
+#area{
+	height: 482px;
+	border: 1px solid #9c9c9c;
+	border-radius: 5px;
+	position: relative;
+	background: url(../img/areabg.jpg);
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 110px;
+}
+#myhand,
+#opHand{
+	width: 800px;
+	text-align: center;
+	height: 240px;
+	margin: 0 auto;
+}
+#myhand .card{
+	display: inline-block;
+	cursor: pointer;
+}
+#myhand .card:hover{
+	box-shadow: 0px 4px 8px #9c9c9c;
+}
+#area #myUnits{
+	height: 270px;
+	width: 100%;
+	bottom: 0;
+	position: absolute;
+	text-align: CENTER;
+}
+#area #myUnits .card.active{
+	box-shadow: 0px 4px 16px #F57F17, 0px -4px 16px #F57F17;
+	z-index: 10;
+}
+#area #opUnits{
+	height: 210px;
+	width: 100%;
+	top: 0;
+	position: absolute;
+	text-align: CENTER;
+}
+#next{
+	width: 116px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	position: absolute;
+	overflow: hidden;
+	box-shadow: 0px 1px 2px #888;
+	text-align: center;
+	background: #9E9E9E;
+	border-top: 4px solid #BDBDBD;
+	border-bottom: 4px solid #757575;
+	color: #000;
+	padding: 0 20px;
+	top: 50%;
+	margin-top: -60px;
+	right: -10px;
+	cursor: default;
+}
+#next.active{
+	background: #4CAF50;
+	border-top-color: #66BB6A;
+	border-bottom-color: #43A047;
+	color: #fff;
+	cursor: pointer;
+}
+#next.active:hover{
+	box-shadow: 0px 4px 8px #9c9c9c;
+}
+.card{
+	margin: 10px;
+	background: #607D8B;
+	border-bottom: 2px solid #455A64;
+	border-top: 2px solid #B0BEC5;
+	border-radius: 10px;
+	width: 120px;
+	position: relative;
+	color: #fff;
+	transform-origin: 70px 224px;
+	box-shadow: 0px 1px 2px #888;
+	height: 200px;
+	padding: 5px;
+	z-index: 0;
+}
+#opHand .card{
+	width: 100px;
+	display: inline-block;
+	cursor: pointer;
+	background: url(../img/rubaha.png) no-repeat center center #607D8B;
+}
+.card .attack{
+	background: #FFC400;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 40px;
+	position: absolute;
+	text-align: center;
+	width: 44px;
+	border-radius: 30px;
+	bottom: 0;
+	left: 0;
+	height: 40px;
+	border-bottom: 2px solid #FFAB00;
+	border-top: 2px solid #FFD740;
+	text-shadow: 0 0 2px #000;
+	z-index: 1;
+}
+.card .attack .svg{
+	position: absolute;
+	width: 40px;
+	z-index: -1;
+	left: 50%;
+	margin-left: -20px;
+}
+.card .attack .svg path,
+.card .attack .svg polygon{
+	fill: #FFE57F;
+}
+.card .health{
+	background: #F44336;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 40px;
+	position: absolute;
+	text-align: center;
+	width: 44px;
+	border-radius: 30px;
+	bottom: 0;
+	right: 0;
+	height: 40px;
+	border-bottom: 2px solid #D32F2F;
+	border-top: 2px solid #E57373;
+	text-shadow: 0 0 2px #000;
+	z-index: 0;
+}
+.card .health .svg{
+	position: absolute;
+	width: 40px;
+	z-index: -1;
+	left: 50%;
+	margin-left: -20px;
+}
+.card .health .svg path{
+	fill: #FF8A80;
+}
+#icons{
+	display: none;
+}
+.card .mana{
+	background: #2979FF;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 40px;
+	position: absolute;
+	text-align: center;
+	width: 44px;
+	border-radius: 30px;
+	top: -8px;
+	left: -8px;
+	height: 40px;
+	border-bottom: 2px solid #2962FF;
+	border-top: 2px solid #448AFF;
+	text-shadow: 0 0 2px #000;
+	z-index: 1;
+}
+.card .mana .svg{
+	position: absolute;
+	width: 44px;
+	z-index: -1;	
+}
+.card .mana .svg svg path{
+	fill: #82B1FF;
+}
+.card .title{
+	background: #455A64;
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 0;
+	line-height: 24px;
+	font-size: 16px;
+	box-shadow: 0px 1px 2px #000;
+}
+.card .title:before,
+.card .title:after{
+	content: '';
+	position: absolute;
+	display: block;
+	border: 12px solid transparent;
+	top:0;
+}
+.card .title:before{
+	left: -18px;
+	border-right: 6px solid #455A64;	
+}
+.card .title:after{
+	right: -18px;
+	border-left: 6px solid #455A64;	
+}
+.card .picture{
+	position: absolute;
+	top: -12px;
+	width: 100px;
+	left: 50%;
+	margin-left: -52px;
+	overflow: hidden;
+	height: 150px;
+	border-radius: 50px;
+	border: 2px solid #607D8B;
+	z-index: -1;
+	background: #fff;
+}
+.card .picture img{
+	transform: translate(-50%, 0);
+	position: relative;
+	left: 50%;
+	height: 100%;
+	z-index: -1;
+}
+#opHand{
+	margin-top: -130px;
+}
+#area .bg{
+	background: #FFD740;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+}
+#area .card{
+	width: 100px;
+	display: inline-block;
+	height: 146px;
+	cursor: pointer;
+	border-radius: 100px;
+	transform-origin: center;
+}
+#area .card .mana,
+#area .card .title{
+	display: none;
+}
+#area .card .picture{
+	top: 2px;
+}
+#to_area .card{
+	z-index: 999;
+	transform-origin: center;
+	-webkit-transform-origin: center;
+	-moz-transform-origin: center;
+	-o-transform-origin: center;
+	box-shadow: 8px 8px 32px #F57F17, -8px -8px 32px #F57F17;
+	-webkit-animation: toarea 2s ease;
+	-moz-animation: toarea 2s ease;
+	-o-animation: toarea 2s ease;
+	animation: toarea 2s ease;
+	display: inline-block;	
+	width: 200px;
+	height: 300px;
+
+}
+#to_area{
+	position: fixed;
+	top: 50%;
+	text-align: center;
+	width: 100%;
+	z-index: 9999;
+	margin-top: -120px;
+}
+#to_area .card .title{
+	font-size: 25px;
+	line-height: 36px;
+	top: 200px;	
+}
+#to_area .card .picture{
+	height: 250px;
+	width: 200px;
+	margin-left: -104px;
+	border-radius: 200px;
+	border-width: 4px;	
+}
+#to_area .card .title:before, 
+#to_area .card .title:after{
+	border-width: 18px;
+}
+#to_area .card .title:before{
+	left: -36px;
+}
+#to_area .card .title:after{
+	right: -36px;
+}
+#hodmsg{
+	font-size: 25px;
+	line-height: 56px;	
+	opacity: 0;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-animation: hodmsg 2s linear;
+	-moz-animation: hodmsg 2s linear;
+	-o-animation: hodmsg 2s linear;
+	animation: hodmsg 2s linear;	
+	background: #455A64;
+	box-shadow: 0px 4px 8px #000;	
+	color: #fff;
+	width: 200px;
+	text-align: center;
+	z-index: 9999;
+}
+#hodmsg:before, 
+#hodmsg:after{
+	border: 28px solid transparent;	
+	content: '';
+	position: absolute;
+	display: block;
+	top: 0;
+}
+#hodmsg:before{
+	left: -56px;
+	border-right-color: #455A64;	
+}
+#hodmsg:after{
+	right: -56px;
+	border-left-color: #455A64;		
+}
+#area .card.die{
+	-webkit-animation: die 2s linear;
+	-moz-animation: die 2s linear;
+	-o-animation: die 2s linear;
+	animation: die 2s linear;	
+}
+#timer{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	top: 50%;
+	margin-top: -60px;
+	z-index: 1;
+	opacity: 0;
+	left: 2px;
+}
+#timer.active{
+	opacity: 1;		
+}
+#timer svg path{
+	fill:green;
+}
+#timer.active svg path{
+	-webkit-animation: timer 120s linear;
+	-moz-animation: timer 120s linear;
+	-o-animation: timer 120s linear;
+	animation: timer 120s linear;
+}
+#timer:after{
+	content: '';
+	display: block;
+	height: 12px;
+	width: 2px;
+	background: green;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -6px;
+	transform-origin: 1px 10px;
+	-webkit-transform-origin: 1px 10px;
+	-moz-transform-origin: 1px 10px;
+	-o-transform-origin: 1px 10px;
+}
+#timer.active:after{
+	-webkit-animation: timerarrow 120s linear;
+	-moz-animation: timerarrow 120s linear;
+	-o-animation: timerarrow 120s linear;
+	animation: timerarrow 120s linear;	
+}
+#timer:before{
+	content: '';
+	display: block;
+	position: absolute;
+}
+#timer .bg{
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid green;
+	z-index: -1;
+}
+#timer.active .bg{
+	border-color: red;
+	transition:all 120s linear;	
+}
+#area .card.nexus{
+	background: url(../img/nexus.png) no-repeat #607D8B;
+	background-size: 100%;
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	z-index: 2;
+	border-radius: 100px 100px 5px 5px;
+	left: 50%;
+	padding: 0;
+	margin: 0;
+	margin-left: -75px;
+	border-bottom: 2px solid #455A64;
+	border-top: 2px solid #B0BEC5;
+	box-shadow: none;
+}
+#opUnits .card.nexus{
+	top: -120px;
+}
+#myUnits .card.nexus{
+	bottom: -64px;
+}
+#opUnits .card{
+	margin-top: 40px;
+}
+#myhand{
+	margin-top: 76px;
+}
+.card.nexus .health{
+	bottom: -8px;
+	right: -8px;
+}
+#msgBox{
+	position: fixed;
+	padding: 10px;
+	top: 50%;
+	left: 50%;
+	background-color: #fff;
+	border: 4px solid #B3BBE2;
+	border-radius: 2px;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	text-align: center;
+	z-index: 9999999;
+}
+#msgBox p{
+	display: block;
+}
+#msgBox .button{
+  display: inline-block;
+  border: 2px solid #B3BBE2;
+  padding: 0 10px;
+  border-radius: 2px;
+  line-height: 1.2;
+  margin: 4px;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+#msgBox .button:hover{
+  background-color: #B3BBE2;
+  color: #fff;
+}
+.card{
+	overflow: visible !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

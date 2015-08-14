@@ -1,0 +1,162 @@
+@keyframes hodmsg {
+	0%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+@-webkit-keyframes hodmsg {
+	0%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+@-moz-keyframes hodmsg {
+	0%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+@-o-keyframes hodmsg {
+	0%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+@keyframes toarea {
+	0%{
+		transform:rotate(-5deg);
+	}
+	100%{
+		transform:rotate(5deg);
+	}
+}
+@-webkit-keyframes toarea {
+	0%{
+		transform:rotate(-5deg);
+	}
+	100%{
+		transform:rotate(5deg);
+	}
+}
+@-moz-keyframes toarea {
+	0%{
+		transform:rotate(-5deg);
+	}
+	100%{
+		transform:rotate(5deg);
+	}
+}
+@-o-keyframes toarea {
+	0%{
+		transform:rotate(-5deg);
+	}
+	100%{
+		transform:rotate(5deg);
+	}
+}
+@keyframes die {
+	100%{
+		opacity: 0;
+	}
+}
+@-webkit-keyframes die {
+	100%{
+		opacity: 0;
+	}
+}
+@-moz-keyframes die {
+	100%{
+		opacity: 0;
+	}
+}
+@-o-keyframes die {
+	100%{
+		opacity: 0;
+	}
+}
+@keyframes timerarrow {
+	100%{
+		transform:rotate(360deg);
+		background: red;
+	}
+}
+@-webkit-keyframes timerarrow {
+	100%{
+		transform:rotate(360deg);
+		background: red;
+	}
+}
+@-moz-keyframes timerarrow {
+	100%{
+		transform:rotate(360deg);
+		background: red;
+	}
+}
+@-o-keyframes timerarrow {
+	100%{
+		transform:rotate(360deg);
+		background: red;
+	}
+}
+@-webkit-keyframes timer {
+	100%{
+		fill:red;
+	}
+}
+@-moz-keyframes timer {
+	100%{
+		fill:red;
+	}
+}
+@-o-keyframes timer {
+	100%{
+		fill:red;
+	}
+}
+@keyframes timer {
+	100%{
+		fill:red;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
