@@ -138,6 +138,16 @@ class Users{
     $opId = $this->names[$opLog];
     $this->send($opId, 'opPutCard', $cardJSON);
   }
+  private function getOpponentId($myId){
+    $myName = $this->getName($myId);
+    $opLog = $this->getOpponent($myName);
+    $opId = $this->names[$opLog];
+    return $opId;
+  }
+  public function attacking($myId,$data){
+    $opId = $this->getOpponentId($myId);
+    $this->send($opId, 'showAttack', $data);
+  }
 
 
 

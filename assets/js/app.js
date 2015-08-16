@@ -53,6 +53,7 @@ define(['socket'],function(socket){
 										+'<div class="bg"></div>'
 									+'</div>'
 									+'<div id="next">Закончить ход</div>'
+									+'<ul id="mana" />'
 								+'</div>'
 								+'<div id="myhand"></div>';
 			requirejs(['fight'],function(fight){

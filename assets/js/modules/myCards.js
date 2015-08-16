@@ -1,4 +1,4 @@
-define(['Matreshka', 'jquery', 'Actions', 'User'],function(Matreshka, $, Actions, User){
+define(['Matreshka', 'jquery', 'Actions', 'User', 'mana'],function(Matreshka, $, Actions, User, mana){
 	
 	var myCards = {};
 
@@ -25,8 +25,9 @@ define(['Matreshka', 'jquery', 'Actions', 'User'],function(Matreshka, $, Actions
 						this.innerHTML = '<img src="img/' + v + '">'
 					}
 				});
-				this.on('click::sandbox',function(){
-					if(!User.meCurrent()) return;
+				this.on('click::sandbox',function(){ // Клик по карте в руке
+					if(!User.meCurrent() || myCards.arena.length >= 7) return;
+					if(!mana.spend(this.mana)) return;
 					myCards.arena.push(this);
 					myCards.hand.splice(myCards.hand.indexOf(this),1);
 					Actions.exec('send', 'putCard',this.toJSON());
@@ -118,6 +119,32 @@ define(['Matreshka', 'jquery', 'Actions', 'User'],function(Matreshka, $, Actions
 					}
 				});
 			});
+		},
+		attacking: function(victim){
+			var agressor = this;
+
+			victim.sandbox.style.zIndex = 5;
+			agressor.sandbox.style.zIndex = 10;
+
+			var yPos = victim.sandbox.offsetTop - (agressor.sandbox.offsetTop + $('#opUnits')[0].offsetHeight) + 100;
+			var xPos = victim.sandbox.offsetLeft - agressor.sandbox.offsetLeft;
+
+			agressor.sandbox.style.top = yPos + 'px';
+			agressor.sandbox.style.left = xPos + 'px';
+
+			var at = setTimeout(function(){
+				agressor.sandbox.style.top = 0;
+				agressor.sandbox.style.left = 0;
+				clearTimeout(at);
+			},200); 
+
+			agressor.enable = 'disable';
+			victim.health = victim.health - agressor.attack;
+			agressor.health = agressor.health - victim.attack;
+
+		},
+		getIndex: function(){
+			return myCards.arena.indexOf(this);
 		}
 	});
 	var myArenaCardsArray = Matreshka.Class({ // Класс списка
@@ -132,6 +159,7 @@ define(['Matreshka', 'jquery', 'Actions', 'User'],function(Matreshka, $, Actions
 		constructor: function(){
 			this.bindNode('sandbox','#myUnits'); // Засовываем в песочницу
 			this.on( 'remove', function( evt ) {
+			    console.log( 'evt.removed');
 			    console.log( evt.removed );
 			});
 		},

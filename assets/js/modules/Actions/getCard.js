@@ -7,7 +7,7 @@ define(['Actions', 'User'],function(Actions, User){
 		run: function(num){
 			num = num || 1;
 			console.log('getCard: ' + num);
-			for (var i = 0; i <= num; i++){
+			for (var i = 0; i < num; i++){
 				setTimeout(function(){
 					Actions.exec('send', 'plusCard');
 				},pause*i);

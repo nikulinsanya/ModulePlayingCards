@@ -11,16 +11,15 @@ requirejs.config({
 		"Matreshka" : "libs/matreshka.min",
 		"Modal" : "modules/Modal",
 		"fight" : "modules/fight",
-		"materialize" : "libs/materialize",
 		"jquery" : "libs/jquery",
 		"myCards" : "modules/myCards",
-		"opCards" : "modules/opCards"
+		"opCards" : "modules/opCards",
+		"mana" : "modules/mana"
 	}
 });
 
 require(['app'],function(app){
 	app.menu();
-	// app.fight();
 });
-requirejs(['jquery','materialize']);
+requirejs(['jquery']);
 requirejs(['rClck']);

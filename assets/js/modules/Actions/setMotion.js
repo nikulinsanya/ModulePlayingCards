@@ -1,4 +1,4 @@
-define(['Actions', 'User', 'myCards'],function(Actions, User, myCards){
+define(['Actions', 'User', 'myCards','mana'],function(Actions, User, myCards, mana){
 
 	var action = {
 		run: function(login){
@@ -9,6 +9,8 @@ define(['Actions', 'User', 'myCards'],function(Actions, User, myCards){
 			Actions.exec('setTimer');
 			if (User.meCurrent()) {
 				myCards.arena.enableAll();
+				Actions.exec('getCard');
+				mana.add();
 			};
 		}
 	}

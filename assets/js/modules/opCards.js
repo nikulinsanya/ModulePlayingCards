@@ -1,5 +1,5 @@
-define(['Matreshka', 'jquery', 'myCards'],function(Matreshka, $, myCards){
-	
+define(['Matreshka', 'jquery', 'myCards', 'Actions'],function(Matreshka, $, myCards, Actions){
+
 	var opCards = {};
 
 	// var heart = $('#icons #heart').html();
@@ -59,7 +59,7 @@ define(['Matreshka', 'jquery', 'myCards'],function(Matreshka, $, myCards){
 						var readyToAttack = myCards.arena.filter(this.filterActive);
 						if (readyToAttack.length != 1) return false;
 						var agressorIndex = myCards.arena.indexOf(readyToAttack[0]);
-						Actions.attack({
+						Actions.exec('attack', {
 							agressor: myCards.arena[agressorIndex],
 							victim: this
 						});
@@ -71,8 +71,37 @@ define(['Matreshka', 'jquery', 'myCards'],function(Matreshka, $, myCards){
 			var classList = obj.class.split(' ');
 			if (classList.indexOf('active') + 1) return true;
 			return false;
+		},
+		attacking: function(victim){
+			console.log('opAttacking');
+			var agressor = this;
+
+			victim.sandbox.style.zIndex = 5;
+			agressor.sandbox.style.zIndex = 10;
+
+			var yPos = victim.sandbox.offsetTop - (agressor.sandbox.offsetTop + $('#opUnits')[0].offsetHeight) + 100;
+			var xPos = victim.sandbox.offsetLeft - agressor.sandbox.offsetLeft;
+
+			agressor.sandbox.style.top = yPos + 'px';
+			agressor.sandbox.style.left = xPos + 'px';
+
+			var at = setTimeout(function(){
+				agressor.sandbox.style.top = 0;
+				agressor.sandbox.style.left = 0;
+				clearTimeout(at);
+			},200); 
+
+			agressor.enable = 'disable';
+			victim.health = victim.health - agressor.attack;
+			agressor.health = agressor.health - victim.attack;
+
+		},
+		getIndex: function(){
+			return opCards.arena.indexOf(this);
 		}
 	});
+
+
 	var opArenaCardsArray = Matreshka.Class({ // Класс списка
 		'extends': Matreshka.Array,
 		Model: opArenaCardsModel,
@@ -88,6 +117,17 @@ define(['Matreshka', 'jquery', 'myCards'],function(Matreshka, $, myCards){
 		add: function(card){
 			card.name = card.title;
 			this.push(card);
+		},
+		getById: function(id){
+
+			var item = this.filter(function(obj){
+				console.log(id);
+				console.log(obj);
+				if(obj.__id == id) return true;
+				return false;
+			});
+			
+			return item;
 		}
 	});
 
